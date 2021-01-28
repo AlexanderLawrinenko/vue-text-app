@@ -1,32 +1,33 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import FirstStep from '../views/FirstStep.vue'
+import Vue from "vue";
+import VueRouter, { RouteConfig } from "vue-router";
 
-const routes: Array<RouteRecordRaw> = [
+Vue.use(VueRouter);
+
+const routes: Array<RouteConfig> = [
   {
-    path: '/',
-    name: 'FirstStep',
-    component: FirstStep
+    path: "/",
+    name: "Home",
+    component: () =>
+    import(/* webpackChunkName: "home" */ "../views/Home.vue")
   },
   {
-    path: '/choose-currency-pair',
-    name: 'SecondStep',
-    component: () => import('../views/SecondStep.vue')
+    path: "/conversion",
+    name: "Conversion.vue",
+    component: () =>
+      import(/* webpackChunkName: "sel-c" */ "../views/Conversion.vue")
   },
   {
-    path: '/result',
-    name: 'Result',
-    component: () => import('../views/Result.vue')
-  },
-  {
-    path: '/*',
-    name: 'NotFound',
-    component: () => import('../views/NotFound.vue')
+    path: "/result",
+    name: "Result",
+    component: () =>
+      import(/* webpackChunkName: "sel-c" */ "../views/Result.vue")
   }
-]
+];
 
-const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+const router = new VueRouter({
+  mode: "history",
+  base: process.env.BASE_URL,
   routes
-})
+});
 
-export default router
+export default router;

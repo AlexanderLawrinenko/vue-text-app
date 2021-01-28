@@ -1,0 +1,18 @@
+#app{
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 100vh;
+}
+.logo {
+  height: 100px;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+}
+.page {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}

@@ -1,20 +1,23 @@
-import { createStore } from 'vuex'
-import { actions } from './actions'
-import { getters } from './getters'
-import { mutations } from './mutations'
-import { state } from './state'
+import Vue from 'vue';
+import Vuex, { StoreOptions } from 'vuex';
+import { RootState } from '@/shared/interfaces/store/types';
+import { currency } from './modules/currency/index';
+import { getters } from './getters';
+import { actions } from './actions';
+import { mutations } from './mutations';
 
-const store = createStore({
-  state,
+Vue.use(Vuex);
+
+const store: StoreOptions<RootState> = {
+  state: {
+    historyList: undefined
+  },
+  getters,
   mutations,
   actions,
-  getters
-})
+  modules: {
+    currency
+  }
+};
 
-export type Store = typeof store
-
-export function useStore() {
-  return store as Store
-}
-
-export default store
+export default new Vuex.Store<RootState>(store);

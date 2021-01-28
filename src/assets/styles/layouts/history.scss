@@ -1,0 +1,29 @@
+.history{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding: 20px 30px;
+    box-shadow: 0 0 4px 0 #dddddd;
+    overflow: auto;
+    &-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        font-weight: 700;
+        &__item {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            &-from {
+                color: #585858;
+            }
+            &-mark {
+                color: #004cd6;
+            }
+            &-result {
+                color: #009e00;
+            }
+        }
+    }
+}
